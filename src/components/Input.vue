@@ -1,7 +1,13 @@
 <template>
     <div class='todo_input'>
-        <input type="text" id="todo_input" class="input_Box" placeholder="Input Todo" v-on:keydown.enter="addTodo" v-model="input_text">
-        <span class = "addlist" v-on:click="addTodo">        
+        <input type="text" 
+               id="todo_input" 
+               class="input_Box" 
+               placeholder="Input Todo" 
+               v-on:keydown.enter="addTodo" 
+               v-model="input_text"/>
+        <span class = "addlist" 
+              v-on:click="addTodo">        
             <i class="fas fa-plus"></i>
         </span>
     </div>

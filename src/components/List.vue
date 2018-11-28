@@ -2,11 +2,22 @@
     <div class="todoList">
         <ul>
             <li class="list" v-bind:key="list.key" v-for="list in listdata">
-              <i v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'" v-on:click="todoComplete(list.title, list.completed)"></i>
-              <input ref="input_box" v-bind:class="list.completed ? 'list-title completed' : 'list-title'" v-bind:value="list.title" v-bind:disabled="list.updateStatus" v-on:keydown.enter="updateTodoComplete(list.title, list.updateStatus)" >
-                <i v-if="list.updateStatus ? '' : disabled='none'" class="fas fa-check" v-on:click="updateTodoComplete(list.title, list.updateStatus)"></i>
-                <i v-if="list.updateStatus ? disabled='none':''" class="fas fa-pen-fancy" v-on:click="updateTodo(list.title, list.updateStatus)"></i>
-                <i v-if="list.updateStatus ? disabled='none':''" class="fas fa-trash-alt" v-on:click="deleteTodo(list.title)"></i>
+              <i v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'" 
+                 v-on:click="todoComplete(list.title, list.completed)"></i>
+
+              <input ref="input_box" 
+                     v-bind:class="list.completed ? 'list-title completed' : 'list-title'" 
+                     v-bind:value="list.title" 
+                     v-bind:disabled="list.updateStatus" 
+                     v-on:keydown.enter="updateTodoComplete(list.title, list.updateStatus)" >
+                <i v-if="list.updateStatus ? '' : disabled='none'" class="fas fa-check" 
+                   v-on:click="updateTodoComplete(list.title, list.updateStatus)"></i>
+                <i v-if="list.updateStatus ? disabled='none':''" 
+                   class="fas fa-pen-fancy" 
+                   v-on:click="updateTodo(list.title, list.updateStatus)"></i>
+                <i v-if="list.updateStatus ? disabled='none':''" 
+                   class="fas fa-trash-alt" 
+                   v-on:click="deleteTodo(list.title)"></i>
             </li>
         </ul>    
     </div>
