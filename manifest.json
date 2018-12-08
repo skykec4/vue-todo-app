@@ -1,0 +1,19 @@
+{
+  "short_name": "Todo",
+  "name": "Todo_App",
+  "icons": [{
+      "src": "./src/images/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./src/images/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#FDFDFD",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait"
+}
