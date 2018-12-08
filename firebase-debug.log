@@ -1,0 +1,62 @@
+[debug] [2018-12-08T08:09:16.160Z] ----------------------------------------------------------------------
+[debug] [2018-12-08T08:09:16.163Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-12-08T08:09:16.163Z] CLI Version:   6.1.0
+[debug] [2018-12-08T08:09:16.163Z] Platform:      darwin
+[debug] [2018-12-08T08:09:16.163Z] Node Version:  v8.9.4
+[debug] [2018-12-08T08:09:16.163Z] Time:          Sat Dec 08 2018 17:09:16 GMT+0900 (KST)
+[debug] [2018-12-08T08:09:16.163Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-08T08:09:16.173Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-08T08:09:16.173Z] > authorizing via signed-in user
+[debug] [2018-12-08T08:09:16.174Z] [iam] checking project todo-app-35f43 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2018-12-08T08:09:16.175Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-08T08:09:16.176Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-12-08T08:09:16.521Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-08T08:09:16.539Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/todo-app-35f43:testIamPermissions  
+
+[debug] [2018-12-08T08:09:17.434Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-08T08:09:17.436Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/todo-app-35f43  
+ 
+[debug] [2018-12-08T08:09:18.368Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'todo-app-35f43'...
+[info] 
+[info] i  deploying hosting
+[debug] [2018-12-08T08:09:18.374Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/todo-app-35f43/versions  
+
+[debug] [2018-12-08T08:09:19.980Z] <<< HTTP RESPONSE 200
+[info] i  hosting[todo-app-35f43]: beginning deploy...
+[info] i  hosting[todo-app-35f43]: found 81 files in /
+[debug] [2018-12-08T08:09:20.017Z] [hosting] hash cache [] load error: lines is not defined
+[debug] [2018-12-08T08:09:20.201Z] [hosting] hash cache [] stored for 81 files
+[debug] [2018-12-08T08:09:20.201Z] [hosting][hash queue][FINAL]
+[debug] [2018-12-08T08:09:20.201Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/todo-app-35f43/versions/7fd18edf7482331c:populateFiles  
+ <request body omitted>
+[debug] [2018-12-08T08:09:22.155Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-08T08:09:22.159Z] [hosting][populate queue][FINAL]
+[debug] [2018-12-08T08:09:22.159Z] [hosting] uploads queued: undefined
+[debug] [2018-12-08T08:09:25.023Z] [hosting][upload] .git/index (6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e) HTTP ERROR 400 : { 'x-guploader-uploadid': 'AEnB2Upz8DITzNaYIi-kskeBRppdtxgHqIvERFmXZ-ynkOaKl75oMvZarpiBywveCnp9QIkWF8-Q4xJwECSNrh5JiLyMBJ_qtR2LUcJodBc1XmNI6NRI6Kc',
+  'content-length': '37',
+  date: 'Sat, 08 Dec 2018 08:09:24 GMT',
+  server: 'UploadServer',
+  'content-type': 'text/html; charset=UTF-8',
+  'alt-svc': 'quic=":443"; ma=2592000; v="44,43,39,35"',
+  connection: 'close' } Couldn't process request (status=400)
+[debug] [2018-12-08T08:09:25.427Z] [uploadQueue] Retrying task 6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e
+[debug] [2018-12-08T08:09:28.198Z] [hosting][upload] .git/index (6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e) HTTP ERROR 400 : { 'x-guploader-uploadid': 'AEnB2UrQocEcdnLKB7wK9sEHsPImvThAEq6SCqcKoEvas2z2XYFj6PzEIxINPH8iTj3lT6udrYHIl32D-JxDLR0hkJJavqwKikd52jtHe1sqNn3MYbJ-G0k',
+  'content-length': '37',
+  date: 'Sat, 08 Dec 2018 08:09:28 GMT',
+  server: 'UploadServer',
+  'content-type': 'text/html; charset=UTF-8',
+  'alt-svc': 'quic=":443"; ma=2592000; v="44,43,39,35"',
+  connection: 'close' } Couldn't process request (status=400)
+[debug] [2018-12-08T08:09:29.004Z] [uploadQueue] Retrying task 6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e
+[debug] [2018-12-08T08:09:31.781Z] [hosting][upload] .git/index (6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e) HTTP ERROR 400 : { 'x-guploader-uploadid': 'AEnB2Uosdm3p2z3phdqVoGLidzzWP_9jkVhP4gXvADi-hCCm6lvC_pOo94O08xL1OO8uBcR6OynPlHi_S3mRuGykRbUDmEfB1ov6vlpWkhTrquBgxReWpoA',
+  'content-length': '37',
+  date: 'Sat, 08 Dec 2018 08:09:31 GMT',
+  server: 'UploadServer',
+  'content-type': 'text/html; charset=UTF-8',
+  'alt-svc': 'quic=":443"; ma=2592000; v="44,43,39,35"',
+  connection: 'close' } Couldn't process request (status=400)
+[debug] [2018-12-08T08:09:33.382Z] [uploadQueue] Retrying task 6ea5cfb9275d2765472a11f3bad995cbf1b91b384a6a8689920e917ceff6d88e

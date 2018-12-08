@@ -2,12 +2,12 @@
   "short_name": "Todo",
   "name": "Todo_App",
   "icons": [{
-      "src": "./src/images/logo.png",
+      "src": "./src/images/192x.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./src/images/logo.png",
+      "src": "./src/images/192x.png",
       "type": "image/png",
       "sizes": "512x512"
     }
