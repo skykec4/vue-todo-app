@@ -1,16 +1,17 @@
 <template>
-    <div class='todo_input'>
-        <input type="text" 
-               id="todo_input" 
-               class="input_Box" 
-               placeholder="Input Todo" 
-               v-on:keydown.enter="addTodo" 
-               v-model="input_text"/>
-        <span class = "addlist" 
-              v-on:click="addTodo">        
-            <i class="fas fa-plus"></i>
-        </span>
-    </div>
+  <div class="todo_input">
+    <input
+      type="text"
+      id="todo_input"
+      class="input_Box"
+      placeholder="Input Todo"
+      v-on:keyup.enter="addTodo"
+      v-model="input_text"
+    >
+    <span class="addlist" v-on:click="addTodo">
+      <i class="fas fa-plus"></i>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -21,10 +22,16 @@ export default {
     };
   },
   methods: {
-    addTodo: function() {
-      this.$emit("AddTodoList", this.input_text);
-
-      console.log("Input.vue : add Todo List", this.input_text);
+    addTodo() {
+      if (!this.input_text) {
+        alert("내용을 입력하세요!");
+        return;
+      }
+      if (this.$store.getters.getPosition(this.input_text) > -1) {
+        alert("중복되는 내용이 있어요!!");
+        return;
+      }
+      this.$store.commit("AddTodoList", this.input_text);
       this.input_text = "";
     }
   }

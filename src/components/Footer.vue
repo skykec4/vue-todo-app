@@ -1,14 +1,14 @@
 <template>
-    <div class="todoFooter">
-        <span class="clearBtn" v-on:click="deleteTodoList">Clear All</span>
-    </div>
+  <div class="todoFooter">
+    <span class="clearBtn" v-on:click="deleteTodoList">Clear All</span>
+  </div>
 </template>
 
 <script>
 export default {
   methods: {
-    deleteTodoList: function() {
-      this.$emit("clearTodoList");
+    deleteTodoList() {
+      this.$store.commit("clearTodoList");
     }
   }
 };

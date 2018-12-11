@@ -1,61 +1,60 @@
 <template>
-    <div class="todoList">
-        <ul>
-            <li class="list" v-bind:key="list.key" v-for="list in listdata">
-              <i v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'" 
-                 v-on:click="todoComplete(list.title, list.completed)"></i>
-
-              <input ref="input_box" 
-                     v-bind:class="list.completed ? 'list-title completed' : 'list-title'" 
-                     v-bind:value="list.title" 
-                     v-bind:disabled="list.updateStatus" 
-                     v-on:keydown.enter="updateTodoComplete(list.title, list.updateStatus)" >
-                <i v-if="list.updateStatus ? '' : disabled='none'" class="fas fa-check" 
-                   v-on:click="updateTodoComplete(list.title, list.updateStatus)"></i>
-                <i v-if="list.updateStatus ? disabled='none':''" 
-                   class="fas fa-pen-fancy" 
-                   v-on:click="updateTodo(list.title, list.updateStatus)"></i>
-                <i v-if="list.updateStatus ? disabled='none':''" 
-                   class="fas fa-trash-alt" 
-                   v-on:click="deleteTodo(list.title)"></i>
-            </li>
-        </ul>    
-    </div>
+  <div class="todoList">
+    <ul>
+      <li class="list" v-bind:key="list.key" v-for="list in this.$store.state.todolist">
+        <i
+          v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'"
+          v-on:click="todoComplete(list.title)"
+        ></i>
+        
+        <input
+          ref="input_box"
+          v-bind:class="list.completed ? 'list-title completed' : 'list-title'"
+          v-bind:value="list.title"
+          v-bind:disabled="list.updateStatus"
+          v-on:keyup.enter="updateTodoComplete(list.title)"
+        >
+        <i
+          v-if="list.updateStatus ? '' : disabled='none'"
+          class="fas fa-check"
+          v-on:click="updateTodoComplete(list.title)"
+        ></i>
+        <i
+          v-if="list.updateStatus ? disabled='none':''"
+          class="fas fa-pen-fancy"
+          v-on:click="updateTodo(list.title)"
+        ></i>
+        <i
+          v-if="list.updateStatus ? disabled='none':''"
+          class="fas fa-trash-alt"
+          v-on:click="deleteTodo(list.title)"
+        ></i>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ["listdata"],
-  data() {
-    return {
-      list_data: this.listdata
-    };
-  },
   methods: {
-    deleteTodo: function(title) {
-      this.$emit("deleteTodo", title);
+    deleteTodo(title) {
+      this.$store.commit("deleteTodo", title);
     },
-    updateTodo: function(title, updatStatus) {
-      this.$emit("updateTodo", title, updatStatus);
+    updateTodo(title) {
+      console.log('daasdasdsd');
+      this.$store.commit("updateTodo", title);
     },
-    updateTodoComplete(prevTitle, updatStatus) {
-      var position = this.getPosition(prevTitle);
-      this.$emit(
-        "updateTodoComplete",
-        prevTitle,
-        this.$refs["input_box"][position].value,
-        updatStatus
-      );
+    updateTodoComplete(prevTitle) {
+      const updateTitle = this.$refs["input_box"][this.$store.getters.getPosition(prevTitle)].value;
+
+      if (prevTitle != updateTitle && this.$store.getters.getPosition(updateTitle) > -1) {
+        alert("중복되는 내용이 있어요!!");
+      } else {
+        this.$store.commit("updateTodoComplete", { prevTitle, updateTitle });
+      }
     },
-    todoComplete(title, completed) {
-      this.$emit("todoComplete", title, completed);
-    },
-    getPosition(title) {
-      return this.list_data
-        .map(function(e) {
-          return e.title;
-        })
-        .indexOf(title);
+    todoComplete(title) {
+      this.$store.commit("todoComplete", title);
     }
   }
 };

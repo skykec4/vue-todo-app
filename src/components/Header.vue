@@ -1,5 +1,5 @@
 <template>
-    <div class='header_title'>TODO-APP</div>
+  <div class="header_title">TODO-APP</div>
 </template>
 
 <script>

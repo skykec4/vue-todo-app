@@ -22,10 +22,10 @@
         navigator.serviceWorker
           .register("/service-worker.js")
           .then(function(success) {
-            console.log("[Service Worker 등록 완료!]", success);
+            console.log("[Service Worker 등록 완료]");
           })
           .catch(function(error) {
-            console.log("[Service Worker 등록 실패]", error);
+            console.log("[Service Worker 등록 실패]");
           });
       }
     </script>
