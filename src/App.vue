@@ -4,7 +4,6 @@
     <todo-input></todo-input>
     <todo-list></todo-list>
     <todo-footer></todo-footer>
-    <!-- <div>{{this.$store.getters.getData}}</div> -->
   </div>
 </template>
 
@@ -16,10 +15,10 @@ import todofooter from "./components/Footer.vue";
 
 export default {
   components: {
-    "todo-header": todoheader,
-    "todo-input": todoinput,
-    "todo-list": todolist,
-    "todo-footer": todofooter
+    todoheader,
+    todoinput,
+    todolist,
+    todofooter
   },
   created: function() {
     this.$store.commit("fetchData");
