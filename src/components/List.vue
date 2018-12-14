@@ -1,7 +1,7 @@
 <template>
   <div class="todoList">
-    <ul>
-      <li class="list" v-bind:key="list.key" v-for="list in this.$store.state.todolist">
+    <transition tag="ul" name="list">
+      <li class="list" v-bind:key="list.title" v-for="list in this.$store.state.todolist">
         <i
           v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'"
           v-on:click="todoComplete(list.title)"
@@ -30,7 +30,7 @@
           v-on:click="deleteTodo(list.title)"
         ></i>
       </li>
-    </ul>
+    </transition>
   </div>
 </template>
 
@@ -41,13 +41,18 @@ export default {
       this.$store.commit("deleteTodo", title);
     },
     updateTodo(title) {
-      console.log('daasdasdsd');
+      console.log("daasdasdsd");
       this.$store.commit("updateTodo", title);
     },
     updateTodoComplete(prevTitle) {
-      const updateTitle = this.$refs["input_box"][this.$store.getters.getPosition(prevTitle)].value;
+      const updateTitle = this.$refs["input_box"][
+        this.$store.getters.getPosition(prevTitle)
+      ].value;
 
-      if (prevTitle != updateTitle && this.$store.getters.getPosition(updateTitle) > -1) {
+      if (
+        prevTitle != updateTitle &&
+        this.$store.getters.getPosition(updateTitle) > -1
+      ) {
         alert("중복되는 내용이 있어요!!");
       } else {
         this.$store.commit("updateTodoComplete", { prevTitle, updateTitle });
@@ -112,5 +117,32 @@ i {
 }
 .fa-smile-beam {
   color: #22741c;
+}
+
+.list-enter-active,
+.list-leave-active,
+.list-move {
+  transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+  transition-property: opacity, transform;
+}
+
+.list-enter {
+  opacity: 0;
+  transform: translateX(50px) scaleY(0.5);
+}
+
+.list-enter-to {
+  opacity: 1;
+  transform: translateX(0) scaleY(1);
+}
+
+.list-leave-active {
+  position: absolute;
+}
+
+.list-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
 }
 </style>

@@ -8,17 +8,17 @@
 </template>
 
 <script>
-import todoheader from "./components/Header.vue";
-import todoinput from "./components/Input.vue";
-import todolist from "./components/List.vue";
-import todofooter from "./components/Footer.vue";
+import TodoHeader from "./components/Header.vue";
+import TodoInput from "./components/Input.vue";
+import TodoList from "./components/List.vue";
+import TodoFooter from "./components/Footer.vue";
 
 export default {
   components: {
-    todoheader,
-    todoinput,
-    todolist,
-    todofooter
+    "todo-header": TodoHeader,
+    "todo-input": TodoInput,
+    "todo-list": TodoList,
+    "todo-footer": TodoFooter
   },
   created: function() {
     this.$store.commit("fetchData");
