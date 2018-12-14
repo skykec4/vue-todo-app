@@ -1,6 +1,6 @@
 <template>
   <div class="todoList">
-    <transition tag="ul" name="list">
+    <transition-group tag="ul" name="list">
       <li class="list" v-bind:key="list.title" v-for="list in this.$store.state.todolist">
         <i
           v-bind:class="list.completed ? 'fas fa-smile-beam fa-lg' : 'fas fa-meh fa-lg'"
@@ -30,7 +30,7 @@
           v-on:click="deleteTodo(list.title)"
         ></i>
       </li>
-    </transition>
+    </transition-group>
   </div>
 </template>
 
